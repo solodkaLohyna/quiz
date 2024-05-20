@@ -1,5 +1,5 @@
 import { quizesArray } from '../quizesArray';
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { Answer } from '../Answer/Answer';
 import JSConfetti from 'js-confetti'
