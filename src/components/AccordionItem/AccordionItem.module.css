@@ -1,0 +1,12 @@
+.accordionContent {
+  transition: max-height 0.5s ease-in-out;
+  margin: 0 auto;
+  color: rgb(184, 92, 212, 0.4);
+  min-height: min-content;
+}
+
+.accordionContent.open {
+  margin-top: 10px;
+  max-height: 500px;
+  
+}
