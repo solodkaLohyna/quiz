@@ -1,4 +1,4 @@
-export const quizesArray = [
+ export const quizesArray = [
   {
     id: 1,
     topic: "What do you know about classic music?",
@@ -87,93 +87,97 @@ export const quizesArray = [
       },
     ],
   },
-  { id: 2, 
+  {
+    id: 2,
     topic: "What do you know about k-pop music?",
     questions: [
-    {
-      id: 1,
-      question: "Which K-pop group’s fandom is known as ‘ARMY’?",
-      answers: [
-        { id: 1, answer: "EXO" },
-        { id: 2, answer: "BTS" },
-        { id: 3, answer: "Blackpink" },
-      ],
-      correctAnswer: 2,
-    },
-    {
-      id: 2,
-      question: "What is the name of BLACKPINK’s debut single?",
-      answers: [
-        { id: 1, answer: "Boombayah" },
-        { id: 2, answer: "Ddu-Du Ddu-Du" },
-        { id: 3, answer: "Kill This Love" },
-      ],
-      correctAnswer: 1,
-    },
-    {
-      id: 3,
-      question: "Which K-pop group’s leader is known for his songwriting skills and stage presence?",
-      answers: [
-        { id: 1, answer: "BTS (RM)" },
-        { id: 2, answer: "EXO (Suho)" },
-        { id: 3, answer: "Monsta X (Shownu)" },
-      ],
-      correctAnswer: 1,
-    },
-    {
-      id: 4,
-      question: "Which K-pop group has a member named Kai?",
-      answers: [
-        { id: 1, answer: "Seventeen" },
-        { id: 2, answer: "EXO" },
-        { id: 3, answer: "GOT7" },
-      ],
-      correctAnswer: 2,
-    },
-    {
-      id: 5,
-      question: "What year did PSY’s ‘Gangnam Style’ become a global hit?",
-      answers: [
-        { id: 1, answer: "2010" },
-        { id: 2, answer: "2012" },
-        { id: 3, answer: "2014" },
-      ],
-      correctAnswer: 2,
-    },
-    {
-      id: 6,
-      question: "Which K-pop group includes members Bang Chan, Lee Know, Changbin, Hyunjin, Han, Felix, Seungmin, and I.N?",
-      answers: [
-        { id: 1, answer: "GOT7" },
-        { id: 2, answer: "NCT" },
-        { id: 3, answer: "Stray Kids" },
-      ],
-      correctAnswer: 3,
-    },
-    {
-      id: 7,
-      question: "‘Dalla Dalla’ is the debut song of which K-pop girl group?",
-      answers: [
-        { id: 1, answer: "ITZY" },
-        { id: 2, answer: "Red Velvet" },
-        { id: 3, answer: "TWICE" },
-      ],
-      correctAnswer: 3,
-    },
-    {
-      id: 8,
-      question: "Which K-pop group’s music video was the first to surpass 1 billion views on YouTube?",
-      answers: [
-        { id: 1, answer: "BLACKPINK - ‘Ddu-Du Ddu-Du’" },
-        { id: 2, answer: "BTS - ‘DNA’" },
-        { id: 3, answer: "PSY - ‘Gangnam Style’" },
-      ],
-      correctAnswer: 1,
-    }
-  ]
+      {
+        id: 1,
+        question: "Which K-pop group’s fandom is known as ‘ARMY’?",
+        answers: [
+          { id: 1, answer: "EXO" },
+          { id: 2, answer: "BTS" },
+          { id: 3, answer: "Blackpink" },
+        ],
+        correctAnswer: 2,
+      },
+      {
+        id: 2,
+        question: "What is the name of BLACKPINK’s debut single?",
+        answers: [
+          { id: 1, answer: "Boombayah" },
+          { id: 2, answer: "Ddu-Du Ddu-Du" },
+          { id: 3, answer: "Kill This Love" },
+        ],
+        correctAnswer: 1,
+      },
+      {
+        id: 3,
+        question:
+          "Which K-pop group’s leader is known for his songwriting skills and stage presence?",
+        answers: [
+          { id: 1, answer: "BTS (RM)" },
+          { id: 2, answer: "EXO (Suho)" },
+          { id: 3, answer: "Monsta X (Shownu)" },
+        ],
+        correctAnswer: 1,
+      },
+      {
+        id: 4,
+        question: "Which K-pop group has a member named Kai?",
+        answers: [
+          { id: 1, answer: "Seventeen" },
+          { id: 2, answer: "EXO" },
+          { id: 3, answer: "GOT7" },
+        ],
+        correctAnswer: 2,
+      },
+      {
+        id: 5,
+        question: "What year did PSY’s ‘Gangnam Style’ become a global hit?",
+        answers: [
+          { id: 1, answer: "2010" },
+          { id: 2, answer: "2012" },
+          { id: 3, answer: "2014" },
+        ],
+        correctAnswer: 2,
+      },
+      {
+        id: 6,
+        question:
+          "Which K-pop group includes members Bang Chan, Lee Know, Changbin, Hyunjin, Han, Felix, Seungmin, and I.N?",
+        answers: [
+          { id: 1, answer: "GOT7" },
+          { id: 2, answer: "NCT" },
+          { id: 3, answer: "Stray Kids" },
+        ],
+        correctAnswer: 3,
+      },
+      {
+        id: 7,
+        question: "‘Dalla Dalla’ is the debut song of which K-pop girl group?",
+        answers: [
+          { id: 1, answer: "ITZY" },
+          { id: 2, answer: "Red Velvet" },
+          { id: 3, answer: "TWICE" },
+        ],
+        correctAnswer: 3,
+      },
+      {
+        id: 8,
+        question:
+          "Which K-pop group’s music video was the first to surpass 1 billion views on YouTube?",
+        answers: [
+          { id: 1, answer: "BLACKPINK - ‘Ddu-Du Ddu-Du’" },
+          { id: 2, answer: "BTS - ‘DNA’" },
+          { id: 3, answer: "PSY - ‘Gangnam Style’" },
+        ],
+        correctAnswer: 1,
+      },
+    ],
   },
-  { 
-    id: 3, 
+  {
+    id: 3,
     topic: "What do you know about rock music?",
     questions: [
       {
@@ -257,10 +261,10 @@ export const quizesArray = [
         ],
         correctAnswer: 1,
       },
-    ]
+    ],
   },
-  { 
-    id: 4, 
+  {
+    id: 4,
     topic: "What do you know about country music?",
     questions: [
       {
@@ -344,6 +348,6 @@ export const quizesArray = [
         ],
         correctAnswer: 3,
       },
-    ]
+    ],
   },
-];
+ ];

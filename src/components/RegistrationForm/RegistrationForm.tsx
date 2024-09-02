@@ -1,25 +1,32 @@
+// RegistrationForm.tsx
 import { Button, Form, Input, Space } from 'antd';
 import { ConfigProvider } from 'antd';
+import axios from 'axios';
 import JSConfetti from 'js-confetti';
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../../contexts/UserContext';
 
 export const RegistrationForm = () => {
+    const navigate = useNavigate();
     const [form] = Form.useForm();
+    const { login } = useUser();
 
-    const onReset = () => {
-        form.resetFields();
-    };
-
-    const onFinish = () => {
+    const onFinish = async (values: any) => {
         confettiRef.current.addConfetti();
-        onReset()
+        try {
+            const response = await axios.post('http://localhost:3000/auth/register', values);
+            login(response.data.email); // Виклик функції login після успішної реєстрації
+            form.resetFields();
+            navigate('/');
+        } catch (error) {
+            console.error('Registration failed:', error);
+        }
     };
 
     const confettiRef = useRef<any>(null);
     useEffect(() => {
         const jsConfetti = new JSConfetti();
-
         confettiRef.current = jsConfetti;
     }, []);
 
@@ -76,5 +83,5 @@ export const RegistrationForm = () => {
                 </Form>
             </div>
         </ConfigProvider >
-    )
+    );
 }

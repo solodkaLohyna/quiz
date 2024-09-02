@@ -1,10 +1,46 @@
-import { Button, Form, Input, Space } from 'antd';
+import { Button, Form, Input, Space, notification } from 'antd';
 import { ConfigProvider } from 'antd';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../../contexts/UserContext';
+import { SecurityQuestions } from '../../SecurityQuestions';
+import {useState } from 'react';
 
 export const LoginForm = () => {
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
+    const navigate = useNavigate();
+    const { login, incrementLoginAttempts, isBlocked, resetLoginAttempts } = useUser();
+    const [showQuestions, setShowQuestions] = useState(false);
+
+    type NotificationType = 'error';
+    const [api, contextHolder] = notification.useNotification();
+    const openNotificationWithIcon = (type: NotificationType) => {
+        api[type]({
+            message: 'Error!',
+            description:
+                'Something is wrong!',
+        });
+    };
+    const onFinish = async (values: any) => {
+        try {
+            const response = await axios.post('http://localhost:3000/auth/login', values);
+            console.log(response);
+            login(response.data.email);
+            navigate('/');
+        } catch (error) {
+            console.error('Login failed:', error);
+            openNotificationWithIcon('error')
+            incrementLoginAttempts();
+            if (!isBlocked) {
+                console.error('Login failed:', error);
+            } else {
+                setShowQuestions(true);
+            }
+        }
+    };
+
+    const handleQuestionsSuccess = () => {
+        resetLoginAttempts();
+        setShowQuestions(false);
     };
 
     return (
@@ -27,40 +63,38 @@ export const LoginForm = () => {
                     }
                 },
             }}>
+            {contextHolder}
             <div className='flex flex-col items-center mx-auto my-56 gap-y-16'>
                 <div className="text-5pxl">
                     <p>👋<span className='font-bold text-purple-600'>Login</span>Time</p>
                 </div>
-                <Form name='Signin'
-                    onFinish={onFinish}
-                    initialValues={{ remember: true }}
-                    style={{ maxWidth: 500, minWidth: 230 }}>
-                    <Form.Item label="Email" name="email" rules={[{ required: true, message: "Please input your email!" }]}>
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Password" name="password" rules={[{ required: true, message: "Please input your password!" }]}>
-                        <Input.Password />
-                    </Form.Item>
-                    <Form.Item className="text-center">
-                        <Space>
-                            <Button
-                                className="text-white font-bold px-8"
-                                size='large'
-                                htmlType='submit'
-                                type="primary">
-                                Submit
-                            </Button>
-                            <Button
-                                className="text-[#d9d9d9] font-bold px-8"
-                                size='large'
-                                type="default">
-                                <Link to={`/`}>Back</Link>
-                            </Button>
-                        </Space>
-                    </Form.Item>
-
-                </Form>
+                {showQuestions ? (
+                    <SecurityQuestions onSuccess={handleQuestionsSuccess} />
+                ) : (
+                    <Form name='Signin' onFinish={onFinish} initialValues={{ remember: true }} style={{ maxWidth: 500, minWidth: 230 }}>
+                        <Form.Item label="Email" name="email" rules={[{ required: true, message: "Please input your email!" }]}>
+                            <Input />
+                        </Form.Item>
+                        <Form.Item label="Password" name="password" rules={[{ required: true, message: "Please input your password!" }]}>
+                            <Input.Password />
+                        </Form.Item>
+                        <Form.Item className="text-center">
+                            <Space>
+                                <Button className="text-white font-bold px-8" size='large' htmlType='submit' type="primary">
+                                    Submit
+                                </Button>
+                                <Button className="text-[#d9d9d9] font-bold px-8" size='large' type="default">
+                                    <Link to={`/`}>Back</Link>
+                                </Button>
+                            </Space>
+                        </Form.Item>
+                    </Form>
+                )}
             </div>
-        </ConfigProvider >
-    )
+        </ConfigProvider>
+    );
 }
+function openNotificationWithIcon(arg0: string) {
+    throw new Error('Function not implemented.');
+}
+

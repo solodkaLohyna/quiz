@@ -8,13 +8,14 @@ import { NotFoundPage } from "./components/NotFoundPage/NotFoundPage.tsx";
 import { RegistrationForm } from "./components/RegistrationForm/RegistrationForm.tsx";
 import "./global.css";
 import { LoginForm } from "./components/LoginForm/LoginForm.tsx";
+import { UserProvider } from "./contexts/UserContext.tsx";
+import { AdminPanel } from "./components/AdminPanel/AdminPanel.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <NotFoundPage />
-
   },
   {
     path: '/quiz/:id',
@@ -27,11 +28,17 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginForm />
+  },
+  {
+    path: '/adminPanel',
+    element: <AdminPanel />
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider> 
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>
 );
